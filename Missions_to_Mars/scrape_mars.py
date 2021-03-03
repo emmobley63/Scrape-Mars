@@ -7,11 +7,19 @@ import os
 from splinter import Browser
 from webdriver_manager.chrome import ChromeDriverManager
 from flask import Flask, render_template
+import pymongo
 
 
 app = Flask(__name__)
 
-@app.route("/scrape")
+
+# Establishing the MongoDB connection
+
+conn = "mongodb://localhost:27017"
+client = pymongo.MongoClient(conn)
+
+db = client.Mars
+
 def scrape():
 
     # Starting up the Browser
@@ -19,14 +27,6 @@ def scrape():
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
 
-
-    # In[3]:
-
-
-    # Establishing the MongoDB connection
-
-    conn = "mongodb://localhost:27017"
-    client = pymongo.MongoClient(conn)
 
     # url to scrape newest news title and description
 
@@ -206,6 +206,15 @@ def scrape():
     # Close the browser
 
     browser.quit()
+
+    conn = "mongodb://localhost:27017"
+    client = pymongo.MongoClient(conn)
+
+    db = client.Mars
+
+    db.Mars.drop()
+
+    db.Mars.insert_many()
 
 if __name__ == "__main__":
     app.run(debug=True)
