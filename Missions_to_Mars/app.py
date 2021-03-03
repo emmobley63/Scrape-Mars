@@ -7,7 +7,7 @@ def ():
 
 
 @app.route("/scrape")
-def import_scrape()
+def echo(): return render_template("index.html", Mars=Mars)
     
 
 if __name__ == "__main__":
