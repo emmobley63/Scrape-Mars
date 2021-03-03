@@ -19,7 +19,7 @@
           
             <!-- Add Welcome message with name and hobby served from backend -->
             <h1>Mission to Mars</h1>
-            <button type="button" class="btn btn-primary">Primary<a href="bonus">Scrape New Data</a></button>
+            <button type="button" class="btn btn-primary">Scrape New Data<a href="bonus"></a></button>
         </div>
 
     </div>
@@ -27,7 +27,7 @@
 
         <div>
             <h2>Latest Mars News</h2>
-            <h3>{{news_title}}</h3>
+            <h3>{{Mars.news_title}}</h3>
             <p>{{news_p}}</p>
         </div>
     </div>
@@ -38,7 +38,31 @@
                 <img src={{featured_image_url}} alt="Featured Mars Image" class="auto-img">
             </div>
             <div class="col-md-4 col-sm-12 col-12">
-                {{html_table}}
+                {{html_table | safe}}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-12 text-center">
+                <h2>Mars Hemispheres</h2>
+                <hr>
+            </div>
+            <div class="col-md-6 col-sm-12 col-12">
+                <img class="auto-img" src={{Mars.hemisphere_image_urls[0].img_url}} alt={{Mars.hemisphere_image_urls[0].titles}}>
+                <h3>{{Mars.hemisphere_image_urls[0].titles}}</h3>
+            </div>
+            <div class="col-md-6 col-sm-12 col-12">
+                <img class="auto-img" src={{Mars.hemisphere_image_urls[1].img_url}} alt={{Mars.hemisphere_image_urls[1].titles}}>
+                <h3>{{Mars.hemisphere_image_urls[1].titles}}</h3>
+            </div>
+            <div class="col-md-6 col-sm-12 col-12">
+                <img class="auto-img" src={{Mars.hemisphere_image_urls[2].img_url}} alt={{Mars.hemisphere_image_urls[2].titles}}>
+                <h3>{{Mars.hemisphere_image_urls[2].titles}}</h3>
+            </div>
+            <div class="col-md-6 col-sm-12 col-12">
+                <img class="auto-img" src={{Mars.hemisphere_image_urls[3].img_url}} alt={{Mars.hemisphere_image_urls[3].titles}}>
+                <h3>{{Mars.hemisphere_image_urls[3].titles}}</h3>
             </div>
         </div>
     </div>
