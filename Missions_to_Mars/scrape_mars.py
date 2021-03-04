@@ -6,21 +6,16 @@ from bs4 import BeautifulSoup as bs
 import os
 from splinter import Browser
 from webdriver_manager.chrome import ChromeDriverManager
-from flask import Flask, render_template
 import pymongo
 
+def init_browser():
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    return Browser('chrome', **executable_path, headless=False)
 
-app = Flask(__name__)
 
-
-# Establishing the MongoDB connection
-
-conn = "mongodb://localhost:27017"
-client = pymongo.MongoClient(conn)
-
-db = client.Mars
 
 def scrape():
+    browser = init_browser()
 
     # Starting up the Browser
 
@@ -199,6 +194,12 @@ def scrape():
 
     print(hemisphere_image_urls)
 
+    Mars_dict = {"news_title": news_title, 
+        "news_p": news_p, 
+        "featured_image_url": featured_image_url, 
+        "html_table": html_table, 
+        "hemisphere_image_urls": hemisphere_image_urls}
+
 
     # In[35]:
 
@@ -207,14 +208,5 @@ def scrape():
 
     browser.quit()
 
-    conn = "mongodb://localhost:27017"
-    client = pymongo.MongoClient(conn)
+    return Mars_dict
 
-    db = client.Mars
-
-    db.Mars.drop()
-
-    db.Mars.insert_many()
-
-if __name__ == "__main__":
-    app.run(debug=True)

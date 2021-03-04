@@ -48,7 +48,7 @@
                 <h2>Mars Hemispheres</h2>
                 <hr>
             </div>
-            {% for images in Mars.hemisphere_image_urls}
+            {% for image in Mars.hemisphere_image_urls %}
             <div class="col-md-6 col-sm-12 col-12">
                 <img class="auto-img" src={{  image.img_url  }} alt={{  image.titles  }}>
                 <h3>{{  image.titles  }}</h3>
