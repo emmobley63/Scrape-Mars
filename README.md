@@ -8,4 +8,6 @@ https://space-facts.com/mars/
 
 https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html
 
-In order to scrape the information I used a python application called "scrape_mars.py". In this application I define a function called scrape that uses Splinter and BeautifulSoup to read the html and css on the websites and pull my desired information.
+In order to scrape the information I used a python application called "scrape_mars.py". In this application I define a function called scrape that uses Splinter and BeautifulSoup to read the html and css on the websites and pull my desired information. Within my function "scrape()" I stored all my scraped information into a dictionary called Mars_dict. In my python function "app.py" I import the scrape() function and Mars_dict from scrape_mars.py. It utilizes pymongo to store the dictionary into MongoDB as a nonrelational database and it uses flask to render my html page with the Mars_db in MongoDB.
+
+For the front-end my html page uses CSS and Bootstrap to create a more asthetically appealing page. Our "Scrape New Data" button calls the scrape() function to find new data and add it to the database.
