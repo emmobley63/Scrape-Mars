@@ -19,21 +19,20 @@ mongo = PyMongo(app)
 def index():
     #Storing Mars data in a list 
     # Mars = Mars_collection.find()
-    Mars = mongo.db.games.find()
-
-
+    Mars = mongo.db.Mars_collection.find_one()
     # Rendering it into index
     return render_template("index.html", Mars=Mars)
 
 
 @app.route("/scrape")
 def scraper():
-
+    print("Inside the scrape route")
     #added first line to test new mongo
     Mars = mongo.db.Mars_collection
     Mars_data = scrape_mars.scrape()
+    print(Mars_data)
     # Mars_collection.drop()
-    Mars_collection.update({}, Mars_data, upsert=True)
+    Mars.update({}, Mars_data, upsert=True)
     return redirect("/", code=302)
     
 
