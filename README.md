@@ -1,4 +1,4 @@
-# web-scraping-challenge
+# Scrape Mars
 
 For this project I wanted to create a webpage where you could find all the latest news on Mars. I used a few different websites to scrape the info and compile it onto the web-scraping-challenge page:
 
