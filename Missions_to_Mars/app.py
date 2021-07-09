@@ -5,15 +5,15 @@ import pymongo
 
 app = Flask(__name__)
 
-# conn = "mongodb://localhost:27017"
-# client = pymongo.MongoClient(conn)
-# db = client.Mars_db
-# Mars_collection = db.Mars_collection
+conn = "mongodb://localhost:27017"
+client = pymongo.MongoClient(conn)
+db = client.Mars_db
+Mars_collection = db.Mars_collection
 
 
 #Trying alternate method to connect to Mongo
-app.config["MONGO_URI"] = "mongodb://localhost:27017/Mars_db"
-mongo = PyMongo(app)
+# app.config["MONGO_URI"] = "mongodb://localhost:27017/Mars_db"
+# mongo = PyMongo(app)
 
 @app.route("/")
 def index():
